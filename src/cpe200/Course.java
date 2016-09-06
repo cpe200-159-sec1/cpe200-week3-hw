@@ -6,20 +6,25 @@ import java.util.regex.Pattern;
 public class Course {
 
     public Course() {
-        this("","","",30);
+
     }
 
     public Course(String n, String cid) {
-        // implement here
+        setCourse_name(n);
+        setCourse_id(cid);
     }
 
     public Course(String n, String cid, String l) {
-        // implement here
+        setCourse_name(n);
+        setCourse_id(cid);
+        setLecturer(l);
     }
 
     public Course(String n, String cid, String l, int max) {
-        this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
-        // implement the rest here
+        setCourse_name(n);
+        setCourse_id(cid);
+        setLecturer(l);
+        max_students = max;
     }
 
     public String getCourse_name() {
@@ -41,36 +46,40 @@ public class Course {
     // implement the other get and set methods here
     public String getLecturer() {
         // implement here
-        return "lecturer";
+        return lecturer;
     }
 
     public void setLecturer(String lecturer) {
+        this.lecturer = !lecturer.equalsIgnoreCase("")?lecturer:this.lecturer;
         // implement here
     }
 
     public int getMax_students() {
         // implement here
-        return 0;
+        return max_students;
     }
 
     public void setMax_students(int max_students) {
         // implement here
+        if(max_students>=10)
+            this.max_students=max_students;
     }
 
     public int getNo_students() {
         // implement here
-        return 0;
+        return no_students;
     }
 
     public void setNo_students(int no_students) {
-        // implement here
+        if(no_students>=0 && no_students <= max_students)
+            this.no_students=no_students;
     }
 
     @Override
     public String toString() {
         String o = this.course_name + " ("
                 + this.course_id + "), Teacher: "
-                + this.lecturer + ", has ";
+                + this.lecturer + ", has "+(no_students==0?"NO student":(no_students==1?"ONE student":(no_students+" students")))+", [maximum: "+ max_students+"]";
 
         // implement the rest here
 
@@ -82,17 +91,18 @@ public class Course {
         Matcher m = p.matcher(id);
 
         // implement the rest here
-
-        return true;
+        if(m.find())
+            return true;
+        else return false;
     }
 
     // Regular expression for the Student ID pattern
-    private static final String idREGEX = "\\d{6}";
+    private static final String idREGEX = "^[0-9]{6}$";
 
     // all private attributes
-    private String course_name;
-    private String course_id;
-    private String lecturer;
-    private int max_students;
-    private int no_students;
+    private String course_name="TBA";
+    private String course_id="000000";
+    private String lecturer="TBA";
+    private int max_students=30;
+    private int no_students=0;
 }
