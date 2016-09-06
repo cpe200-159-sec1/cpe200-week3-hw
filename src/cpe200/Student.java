@@ -85,7 +85,7 @@ public class Student {
     }
 
     // declare your attributes here
-    private static final String idREGEX = "^5[6-9]061[0-2]\\d{3}";
+    private static final String idREGEX = "^5[6-9]061[0-2]\\d{3}$";
     private String name;
     private String id;
     private int yob;
