@@ -23,7 +23,7 @@ Attributes:
     * P is a number in [0-2]
     * N is a number in [0-9]
 * Year of birth : birth year of a student, Must be larger than 1989, default value is "1990", will be used to calculate student's age later
-* Status : status of a student, can be "true" for active or "false" for inactive
+* s : status of a student, can be "true" for active or "false" for inactive
 
 Methods:
 

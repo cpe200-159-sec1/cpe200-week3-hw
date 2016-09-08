@@ -10,16 +10,19 @@ public class Course {
     }
 
     public Course(String n, String cid) {
-        // implement here
+        this(n,cid,"",30);
     }
 
     public Course(String n, String cid, String l) {
-        // implement here
+        this(n,cid,l,30);
     }
 
     public Course(String n, String cid, String l, int max) {
         this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
-        // implement the rest here
+        this.course_id = isValidCourse_id(cid) ? cid:"000000";
+        this.lecturer = !l.equalsIgnoreCase("") ? l:"TBA";
+        this.max_students = (max>=10) ? max:30;
+        this.no_students = 0;
     }
 
     public String getCourse_name() {
@@ -40,50 +43,43 @@ public class Course {
 
     // implement the other get and set methods here
     public String getLecturer() {
-        // implement here
-        return "lecturer";
+        return lecturer;
     }
 
     public void setLecturer(String lecturer) {
-        // implement here
+        this.lecturer = !lecturer.equalsIgnoreCase("") ? lecturer:this.lecturer;
     }
 
     public int getMax_students() {
-        // implement here
-        return 0;
+        return max_students;
     }
 
     public void setMax_students(int max_students) {
-        // implement here
+        this.max_students = (max_students>=10) ? max_students:this.max_students;
     }
 
     public int getNo_students() {
-        // implement here
-        return 0;
+        return no_students;
     }
 
     public void setNo_students(int no_students) {
-        // implement here
+        this.no_students = (no_students>=0 && no_students<= max_students) ? no_students:this.no_students;
     }
 
     @Override
     public String toString() {
         String o = this.course_name + " ("
                 + this.course_id + "), Teacher: "
-                + this.lecturer + ", has ";
-
-        // implement the rest here
-
+                + this.lecturer + ", has "
+                + ((this.no_students==0) ? "NO student":(this.no_students>2) ? this.no_students+" students":"ONE student") + ", "
+                + "[maximum: " + this.max_students + "]";
         return o;
     }
 
     private boolean isValidCourse_id(String id) {
         Pattern p = Pattern.compile(idREGEX);
         Matcher m = p.matcher(id);
-
-        // implement the rest here
-
-        return true;
+        return m.matches();
     }
 
     // Regular expression for the Student ID pattern
