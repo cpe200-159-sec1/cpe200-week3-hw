@@ -6,93 +6,116 @@ import java.util.regex.Pattern;
 public class Course {
 
     public Course() {
-        this("","","",30);
+
     }
 
     public Course(String n, String cid) {
-        // implement here
+        this.setCourse_name(n);
+        this.setCourse_id(cid);
     }
 
     public Course(String n, String cid, String l) {
-        // implement here
+        this.setCourse_name(n);
+        this.setCourse_id(cid);
+        this.setLecturer(l);
     }
 
     public Course(String n, String cid, String l, int max) {
-        this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
-        // implement the rest here
+        this.setCourse_name(n);
+        this.setCourse_id(cid);
+        this.setLecturer(l);
+        this.setMax_students(max);
     }
 
-    public String getCourse_name() {
+    public String getCourse_name()
+    {
         return course_name;
     }
 
-    public void setCourse_name(String course_name) {
-        this.course_name = !course_name.equalsIgnoreCase("")?course_name:this.course_name;
+    public void setCourse_name(String course_name)
+    {
+        if(!course_name.isEmpty())
+        {
+            this.course_name=course_name;
+        }
     }
 
-    public String getCourse_id() {
+    public String getCourse_id()
+    {
         return course_id;
     }
 
-    public void setCourse_id(String course_id) {
-        this.course_id = isValidCourse_id(course_id)?course_id:this.course_id;
+    public void setCourse_id(String course_id)
+    {
+        String test="^[0-9]{1,6}$";
+        if(course_id.matches(test))
+        {
+            this.course_id=course_id;
+        }
     }
 
-    // implement the other get and set methods here
-    public String getLecturer() {
-        // implement here
-        return "lecturer";
+    public String getLecturer()
+    {
+        return this.lecturer;
     }
 
-    public void setLecturer(String lecturer) {
-        // implement here
+    public void setLecturer(String lecturer)
+    {
+        if(!lecturer.isEmpty())
+        {
+            this.lecturer=lecturer;
+        }
     }
 
-    public int getMax_students() {
-        // implement here
-        return 0;
+    public int getMax_students()
+    {
+        return this.max_students;
     }
 
-    public void setMax_students(int max_students) {
-        // implement here
+    public void setMax_students(int max_students)
+    {
+        if(max_students>=10)
+        {
+            this.max_students = max_students;
+        }
     }
 
-    public int getNo_students() {
-        // implement here
-        return 0;
+    public int getNo_students()
+    {
+        return this.no_students;
     }
 
-    public void setNo_students(int no_students) {
-        // implement here
+    public void setNo_students(int no_students)
+    {
+        if(no_students>0&&no_students<=this.max_students)
+        {
+            this.no_students=no_students;
+        }
     }
 
     @Override
     public String toString() {
         String o = this.course_name + " ("
                 + this.course_id + "), Teacher: "
-                + this.lecturer + ", has ";
-
-        // implement the rest here
-
+                + this.lecturer + ", has "+((this.no_students==0) ? "NO student":(this.no_students>2) ?
+                this.no_students+" students":"ONE student") + ", "
+                +"[maximum: " + this.max_students + "]";
         return o;
     }
 
     private boolean isValidCourse_id(String id) {
         Pattern p = Pattern.compile(idREGEX);
         Matcher m = p.matcher(id);
-
-        // implement the rest here
-
-        return true;
+        return m.matches();
     }
 
     // Regular expression for the Student ID pattern
     private static final String idREGEX = "\\d{6}";
 
     // all private attributes
-    private String course_name;
-    private String course_id;
-    private String lecturer;
-    private int max_students;
-    private int no_students;
+    private String course_name="TBA";
+    private String course_id="000000";
+    private String lecturer="TBA";
+    private int max_students=30;
+    private int no_students=0;
 }
