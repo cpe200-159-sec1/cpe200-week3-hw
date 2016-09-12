@@ -2,12 +2,6 @@ package cpe200;
 
 public class Student {
 
-    // declare your attributes here
-    private String student_name = "John Doe";
-    private String student_id = "560610000";
-    private int yob = 1990;
-    private boolean status = false;
-
     public Student() {
     }
 
@@ -84,4 +78,10 @@ public class Student {
     private boolean isValidYOB(int yob) {
         return yob > 1989;
     }
+
+    // declare your attributes here
+    private String student_name = "John Doe";
+    private String student_id = "560610000";
+    private int yob = 1990;
+    private boolean status = false;
 }
