@@ -81,7 +81,10 @@ public class Course {
 
     public void setNo_students(int No_students) {
         // implement here
-        no_students = No_students;
+        if (No_students>60 || No_students<0){
+
+        }
+        else no_students = No_students;
     }
 
     @Override
