@@ -3,34 +3,27 @@ package cpe200;
 public class Student {
 
     // declare your attributes here
-    private String student_name;
-    private String student_id;
-    private int yob;
-    private boolean status;
+    private String student_name = "John Doe";
+    private String student_id = "560610000";
+    private int yob = 1990;
+    private boolean status = false;
 
     public Student() {
-        this.setName("John Doe");
-        this.setStudent_id("560610000");
-        this.setYearOfBirth(1990);
-        this.setStatus(false);
     }
 
     // implement all missing constructors here
     public Student(String student_name, String student_id) {
-        this();
         this.setName(student_name);
         this.setStudent_id(student_id);
     }
 
     public Student(String student_name, String student_id, int yob) {
-        this();
         this.setName(student_name);
         this.setStudent_id(student_id);
         this.setYearOfBirth(yob);
     }
 
     public Student(String student_name, String student_id, int yob, boolean status) {
-        this();
         this.setName(student_name);
         this.setStudent_id(student_id);
         this.setYearOfBirth(yob);
