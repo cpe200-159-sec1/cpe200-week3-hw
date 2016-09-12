@@ -33,9 +33,6 @@ public class Student {
         this.setStudent_id(student_id);
         this.setName(student_name);
         this.setYearOfBirth(yob);
-        //this.getStudent_id();
-        //this.getName();
-        //this.getYearOfBirth();
         this.setStatus(status);
 
     }
