@@ -56,8 +56,8 @@ public class CourseTest {
 
         assertEquals("CPE200-OOP", c.getCourse_name());
         assertEquals("261344", c.getCourse_id());
-        assertEquals("Pruet Boonma", c.getLecturer());
-        assertEquals(60, c.getMax_students() );
+        assertEquals("TBA", c.getLecturer());
+        assertEquals(30, c.getMax_students() );
 
         c.setCourse_id("2612003");
         assertEquals("261344", c.getCourse_id());

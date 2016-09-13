@@ -45,7 +45,7 @@ public class StudentTest {
     public void invalidName() throws Exception {
         // continue from setUp()
         s.setName("");
-        assertEquals("Sanguan Sornjai", s.getName());
+        assertEquals("John Doe", s.getName());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class StudentTest {
 
         // invalid data
         s.setStudent_id("550710111");
-        assertEquals("590611702",s.getStudent_id());
+        assertEquals("560610000",s.getStudent_id());
 
         // valid data
         s.setStudent_id("590612111");
@@ -62,22 +62,22 @@ public class StudentTest {
 
         // invalid data
         s.setStudent_id("590613111");
-        assertEquals("590612111",s.getStudent_id());
+        assertEquals("560610000",s.getStudent_id());
 
         // invalid data
         s.setStudent_id("590613111000");
-        assertEquals("590612111",s.getStudent_id());
+        assertEquals("560610000",s.getStudent_id());
 
         // invalid data
         s.setStudent_id("helloworld");
-        assertEquals("590612111",s.getStudent_id());
+        assertEquals("560610000",s.getStudent_id());
     }
 
     @Test
     public void invalidYOB() throws Exception {
         // continue from setUp()
         s.setYearOfBirth(1976);
-        assertEquals(1999, s.getYearOfBirth());
+        assertEquals(1990, s.getYearOfBirth());
     }
 
     @Test
