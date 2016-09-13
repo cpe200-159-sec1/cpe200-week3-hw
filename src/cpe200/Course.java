@@ -14,19 +14,20 @@ public class Course {
     }
 
     public Course(String n, String cid, String l) {
-        // implement here
-        this.course_id = cid;
-        this.course_name = n;
-        this.lecturer = l;
+        this(n,cid,l,30);
     }
 
     public Course(String n, String cid, String l, int max) {
         this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
         // implement the rest here
-        this.course_id = cid;
-        this.course_name = n;
-        this.lecturer = l;
-        this.max_students = max;
+        this.setCourse_name(n);
+        this.course_id = !n.equalsIgnoreCase("")?n:"000000";
+        this.setCourse_id(cid);
+        this.lecturer = !n.equalsIgnoreCase("")?n:"TBA";
+        this.setLecturer(l);
+        max_students = 30;
+        this.setMax_students(max);
+        no_students = 0;
     }
 
     public String getCourse_name() {
@@ -63,7 +64,8 @@ public class Course {
 
     public void setMax_students(int max_students) {
         // implement here
-        this.max_students = max_students;
+        if (max_students >=10) this.max_students=max_students;
+        else this.max_students=60;
     }
 
     public int getNo_students() {
@@ -73,7 +75,8 @@ public class Course {
 
     public void setNo_students(int no_students) {
         // implement here
-        this.no_students = no_students;
+        if (no_students >=0 && no_students <=max_students) this.no_students=no_students;
+        else this.no_students=0;
     }
 
     @Override

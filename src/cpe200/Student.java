@@ -1,9 +1,5 @@
 package cpe200;
 
-import java.time.Year;
-
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 public class Student {
 
     String Name;
@@ -13,10 +9,10 @@ public class Student {
 
     public Student() {
 
-            Name = "John Doe";
-            Student_id = "560610000";
-            YOB = 1990;
-            Stat = false;
+        Name = "John Doe";
+        Student_id = "560610000";
+        YOB = 1990;
+        Stat = false;
 
         // implement here
 
