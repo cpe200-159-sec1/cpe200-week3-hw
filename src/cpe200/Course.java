@@ -10,16 +10,23 @@ public class Course {
     }
 
     public Course(String n, String cid) {
-        // implement here
+        this(n,cid,"",30);
     }
 
     public Course(String n, String cid, String l) {
         // implement here
+        this.course_id = cid;
+        this.course_name = n;
+        this.lecturer = l;
     }
 
     public Course(String n, String cid, String l, int max) {
         this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
         // implement the rest here
+        this.course_id = cid;
+        this.course_name = n;
+        this.lecturer = l;
+        this.max_students = max;
     }
 
     public String getCourse_name() {
@@ -41,29 +48,32 @@ public class Course {
     // implement the other get and set methods here
     public String getLecturer() {
         // implement here
-        return "lecturer";
+        return lecturer;
     }
 
     public void setLecturer(String lecturer) {
         // implement here
+        this.lecturer = !lecturer.equalsIgnoreCase("")?lecturer:this.lecturer;
     }
 
     public int getMax_students() {
         // implement here
-        return 0;
+        return max_students;
     }
 
     public void setMax_students(int max_students) {
         // implement here
+        this.max_students = max_students;
     }
 
     public int getNo_students() {
         // implement here
-        return 0;
+        return no_students;
     }
 
     public void setNo_students(int no_students) {
         // implement here
+        this.no_students = no_students;
     }
 
     @Override
@@ -73,8 +83,10 @@ public class Course {
                 + this.lecturer + ", has ";
 
         // implement the rest here
-
-        return o;
+        return String.format("%s (%s), Teacher: %s, has %s student%s, [maximum: %d]",
+                course_name, course_id, lecturer,
+                no_students==0?"NO":no_students==1?"ONE":String.valueOf(no_students)
+                ,no_students>1?"s":"", max_students);
     }
 
     private boolean isValidCourse_id(String id) {
@@ -82,8 +94,8 @@ public class Course {
         Matcher m = p.matcher(id);
 
         // implement the rest here
-
-        return true;
+        if (id.matches(idREGEX)) return  true;
+        else return false;
     }
 
     // Regular expression for the Student ID pattern
