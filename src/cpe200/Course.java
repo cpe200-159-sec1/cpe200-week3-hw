@@ -20,16 +20,17 @@ public class Course {
     }
 
     public Course(String n, String cid, String l, int max) {
-        this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
+        this.course_name = !n.matches("")?n:"TBA";
         // implement the rest here
         this.setCourse_name(n);
-        this.course_id = !n.equalsIgnoreCase("")?n:"000000";
+        this.course_id = n.matches("")?"000000":n;
         this.setCourse_id(cid);
-        this.lecturer = !n.equalsIgnoreCase("")?n:"TBA";
+
+        this.lecturer = n.matches("")?"TBA":n;
         this.setLecturer(l);
+
         max_students = 30;
         this.setMax_students(max);
-        no_students = 0;
 
     }
 
@@ -38,7 +39,7 @@ public class Course {
     }
 
     public void setCourse_name(String course_name) {
-        this.course_name = !course_name.equalsIgnoreCase("")?course_name:this.course_name;
+        this.course_name = course_name.matches("")?this.course_name:course_name;
     }
 
     public String getCourse_id() {
@@ -57,7 +58,7 @@ public class Course {
 
     public void setLecturer(String lecturer) {
         // implement here
-        this.lecturer = !lecturer.equalsIgnoreCase("")?lecturer:this.lecturer;
+        this.lecturer = lecturer.matches("")?this.lecturer:lecturer;
     }
 
     public int getMax_students() {

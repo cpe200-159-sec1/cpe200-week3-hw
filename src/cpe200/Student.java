@@ -23,7 +23,7 @@ public class Student {
     }
 
     public Student(String n, String ssid, int yrbi, boolean sts){
-        this.name = !n.equalsIgnoreCase("")?n:"John Doe";
+        this.name = n.matches("")?"John Doe":n;
         this.sid = isValidStudent_id(ssid)?ssid:"560610000";
         this.yrb = isValidYOB(yrbi)?yrbi:1990;
         this.status = sts;
@@ -48,7 +48,7 @@ public class Student {
 
 
     public void setName(String n){
-        this.name = (!n.equalsIgnoreCase(""))?n:this.name;
+        this.name = (n.matches(""))?this.name:n;
     }
 
     public void setStudent_id(String ssid){
@@ -61,19 +61,18 @@ public class Student {
 
     @Override
     public String toString() {
-        String o = this.name + " (" + this.sid + ") was born in " + this.yrb + " is an " + (isActive()?"ACTIVE student.":"INACTIVE student.");
-
-        return o;
+        return this.name    + " (" + this.sid + ") was born in "
+                            + this.yrb + " is an "
+                            + (isActive()?"ACTIVE student.":"INACTIVE student.");
     }
 
     private boolean isValidStudent_id(String id) {
-        String Check = "[5][6-9][0][6][1][0-2][0-9][0-9][0-9]";
-        if (id.matches(Check)) return true;
+        if (id.matches("[5][6-9][0][6][1][0-2][0-9][0-9][0-9]")) return true;
         return false;
     }
 
     private boolean isValidYOB(int yrbi) {
-        return (yrbi > 1989);
+        return (yrbi >= 1990);
     }
 
     // declare your attributes here
