@@ -56,9 +56,7 @@ public class Student {
     public int getYearOfBirth(){
         return yob;
     }
-    public boolean isActive(){
-
-        return status;
+    public boolean isActive(){return status;
     }
 
 
