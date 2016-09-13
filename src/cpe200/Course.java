@@ -11,15 +11,26 @@ public class Course {
 
     public Course(String n, String cid) {
         // implement here
+        this(n,cid,"",30);
     }
 
     public Course(String n, String cid, String l) {
         // implement here
+        this(n,cid,l,30);
     }
 
     public Course(String n, String cid, String l, int max) {
         this.course_name = !n.equalsIgnoreCase("")?n:"TBA";
         // implement the rest here
+        this.setCourse_name(n);
+        this.course_id = !n.equalsIgnoreCase("")?n:"000000";
+        this.setCourse_id(cid);
+        this.lecturer = !n.equalsIgnoreCase("")?n:"TBA";
+        this.setLecturer(l);
+        max_students = 30;
+        this.setMax_students(max);
+        no_students = 0;
+
     }
 
     public String getCourse_name() {
@@ -41,29 +52,32 @@ public class Course {
     // implement the other get and set methods here
     public String getLecturer() {
         // implement here
-        return "lecturer";
+        return this.lecturer;
     }
 
     public void setLecturer(String lecturer) {
         // implement here
+        this.lecturer = !lecturer.equalsIgnoreCase("")?lecturer:this.lecturer;
     }
 
     public int getMax_students() {
         // implement here
-        return 0;
+        return this.max_students;
     }
 
     public void setMax_students(int max_students) {
         // implement here
+        this.max_students = (max_students >= 10)?max_students:this.max_students;
     }
 
     public int getNo_students() {
         // implement here
-        return 0;
+        return this.no_students;
     }
 
     public void setNo_students(int no_students) {
         // implement here
+        this.no_students = (no_students >= 0 && no_students <= this.max_students)?no_students:this.no_students;
     }
 
     @Override
@@ -73,7 +87,10 @@ public class Course {
                 + this.lecturer + ", has ";
 
         // implement the rest here
-
+        if (getNo_students() == 0) o += "NO student";
+        else if(getNo_students() == 1) o += "ONE student";
+        else o += getNo_students() + " students";
+        o += ", [maximum: " + getMax_students() + "]";
         return o;
     }
 
@@ -82,8 +99,7 @@ public class Course {
         Matcher m = p.matcher(id);
 
         // implement the rest here
-
-        return true;
+        return m.matches();
     }
 
     // Regular expression for the Student ID pattern
