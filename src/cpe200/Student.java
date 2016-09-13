@@ -67,7 +67,7 @@ public class Student {
     }
 
     private boolean isValidStudent_id(String id) {
-        if (id.matches("[5][6-9][0][6][1][0-2][0-9][0-9][0-9]")) return true;
+        if (id.matches("^[5][6-9][0][6][1][0-2][0-9][0-9][0-9]$")) return true;
         return false;
     }
 
