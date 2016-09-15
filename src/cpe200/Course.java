@@ -77,6 +77,7 @@ public class Course {
 
     @Override
     public String toString() {
+        //Better to use StringBuffer class, way more faster.
         String o = this.course_name + " ("
                 + this.course_id + "), Teacher: "
                 + this.lecturer + ", has "
