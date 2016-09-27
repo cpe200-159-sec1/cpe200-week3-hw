@@ -76,7 +76,7 @@ public class Course {
                 + this.course_id + "), Teacher: "
                 + this.lecturer + ", has " + (no_students == 0 ? "NO student" : (no_students == 1 ? "ONE student" : (no_students + " students"))) + ", [maximum: " + max_students + "]";
 
-        // implement the rest here
+        // implement the rest here(เงื่อนไข ? จริง:เท็จ)
 
         return o;
     }

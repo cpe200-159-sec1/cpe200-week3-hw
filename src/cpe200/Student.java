@@ -1,13 +1,12 @@
 package cpe200;
 
 public class Student {
-    private String name, studentID;
-    private int year;
-    private boolean status;
+    private String name = "John Doe", studentID = "560610000";
+    private int year = 1990;
+    private boolean status = false;
 
     //Constructor
     public Student() {
-        this("John Doe", "560610000", 1990, false);
     }
 
     public Student(String n, String id) {
@@ -27,22 +26,18 @@ public class Student {
 
     //set_function
     public void setName(String n) {
-        if (!n.isEmpty())
+        if (n != null && (!n.equals("")))
             name = n;
     }
 
     public void setStudent_id(String id) {
-        if (isValidStudent_id(id))
+        if (id != null && (isValidStudent_id(id)))
             studentID = id;
-        else if (studentID == null)
-            studentID = "560610000";
     }
 
     public void setYearOfBirth(int yob) {
         if (isValidYOB(yob))
             year = yob;
-        else if (year == 0)
-            year = 1990;
     }
 
     public void setStatus(boolean s) {
@@ -75,7 +70,7 @@ public class Student {
     }
 
     private boolean isValidStudent_id(String id) {
-        String ID = "[5][6-9][0][6][1][0-2][0-9]{3}";
+        String ID = "5[6-9]061[0-2][0-9]{3}";
 
         return id.matches(ID);
     }
