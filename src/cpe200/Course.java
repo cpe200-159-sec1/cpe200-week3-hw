@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class Course {
 
     public Course() {
-        this("","","",30);
+        this("TBA","0000","TBA",30);
     }
 
     public Course(String n, String cid) {
